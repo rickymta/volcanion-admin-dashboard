@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS API - Google Login Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .login-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .user-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+        }
+        .api-test {
+            margin-top: 30px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .response {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .error {
+            color: #dc3545;
+        }
+        .success {
+            color: #28a745;
+        }
+    </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>CMS API - Google Authentication Test</h1>
+        
+        <div class="login-section">
+            <h2>Đăng nhập bằng Google</h2>
+            <p>Nhấn nút bên dưới để đăng nhập bằng tài khoản Google</p>
+            
+            <!-- Google Sign-In Button -->
+            <div id="g_id_onload"
+                 data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                 data-context="signin"
+                 data-ux_mode="popup"
+                 data-callback="handleCredentialResponse">
+            </div>
+            
+            <div class="g_id_signin"
+                 data-type="standard"
+                 data-shape="rectangular"
+                 data-theme="outline"
+                 data-text="signin_with"
+                 data-size="large">
+            </div>
+        </div>
+
+        <div class="user-info" id="userInfo">
+            <h3>Thông tin người dùng</h3>
+            <div id="userDetails"></div>
+        </div>
+
+        <div class="api-test">
+            <h3>Test API</h3>
+            <p>Sau khi đăng nhập thành công, bạn có thể test các API endpoints:</p>
+            
+            <button onclick="testGetProfile()">Get Profile</button>
+            <button onclick="testUpdateProfile()">Update Profile</button>
+            <button onclick="testGetAllUsers()">Get All Users</button>
+            <button onclick="logout()">Logout</button>
+            
+            <div id="apiResponse" class="response"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'https://localhost:7081/api'; // Thay đổi URL này theo cấu hình của bạn
+        let authToken = localStorage.getItem('authToken');
+        let currentUser = null;
+
+        // Hiển thị thông tin user nếu đã đăng nhập
+        if (authToken) {
+            showUserInfo();
+        }
+
+        function handleCredentialResponse(response) {
+            console.log('Google ID Token received:', response.credential);
+            
+            // Gửi ID token tới backend
+            fetch(`${API_BASE_URL}/auth/google-login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    idToken: response.credential
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.token) {
+                    // Lưu JWT token
+                    authToken = data.token;
+                    currentUser = data.user;
+                    localStorage.setItem('authToken', authToken);
+                    
+                    showMessage('Đăng nhập thành công!', 'success');
+                    showUserInfo();
+                    
+                    console.log('Login successful:', data);
+                } else {
+                    showMessage('Đăng nhập thất bại: ' + (data.message || 'Unknown error'), 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showMessage('Lỗi kết nối tới server', 'error');
+            });
+        }
+
+        function showUserInfo() {
+            if (currentUser) {
+                document.getElementById('userDetails').innerHTML = `
+                    <p><strong>Họ tên:</strong> ${currentUser.fullName}</p>
+                    <p><strong>Email:</strong> ${currentUser.email}</p>
+                    <p><strong>Provider:</strong> ${currentUser.provider}</p>
+                    <p><strong>Ngày tạo:</strong> ${new Date(currentUser.createdAt).toLocaleString()}</p>
+                    ${currentUser.dateOfBirth ? `<p><strong>Ngày sinh:</strong> ${new Date(currentUser.dateOfBirth).toLocaleDateString()}</p>` : ''}
+                `;
+            } else {
+                document.getElementById('userDetails').innerHTML = '<p>Đã đăng nhập</p>';
+            }
+            document.getElementById('userInfo').style.display = 'block';
+        }
+
+        function testGetProfile() {
+            if (!authToken) {
+                showMessage('Vui lòng đăng nhập trước', 'error');
+                return;
+            }
+
+            fetch(`${API_BASE_URL}/user/profile`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${authToken}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                showApiResponse('GET /api/user/profile', data);
+                if (data.id) {
+                    currentUser = data;
+                    showUserInfo();
+                }
+            })
+            .catch(error => {
+                showApiResponse('GET /api/user/profile', { error: error.message });
+            });
+        }
+
+        function testUpdateProfile() {
+            if (!authToken) {
+                showMessage('Vui lòng đăng nhập trước', 'error');
+                return;
+            }
+
+            const updateData = {
+                firstName: "John Updated",
+                lastName: "Doe Updated",
+                dateOfBirth: "1990-01-01T00:00:00Z"
+            };
+
+            fetch(`${API_BASE_URL}/user/profile`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${authToken}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updateData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                showApiResponse('PUT /api/user/profile', data);
+                if (data.id) {
+                    currentUser = data;
+                    showUserInfo();
+                    showMessage('Cập nhật thông tin thành công!', 'success');
+                }
+            })
+            .catch(error => {
+                showApiResponse('PUT /api/user/profile', { error: error.message });
+            });
+        }
+
+        function testGetAllUsers() {
+            if (!authToken) {
+                showMessage('Vui lòng đăng nhập trước', 'error');
+                return;
+            }
+
+            fetch(`${API_BASE_URL}/user`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${authToken}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                showApiResponse('GET /api/user', data);
+            })
+            .catch(error => {
+                showApiResponse('GET /api/user', { error: error.message });
+            });
+        }
+
+        function logout() {
+            authToken = null;
+            currentUser = null;
+            localStorage.removeItem('authToken');
+            
+            document.getElementById('userInfo').style.display = 'none';
+            document.getElementById('apiResponse').innerHTML = '';
+            
+            showMessage('Đã đăng xuất thành công!', 'success');
+        }
+
+        function showMessage(message, type) {
+            const responseDiv = document.getElementById('apiResponse');
+            responseDiv.innerHTML = `<div class="${type}">${message}</div>`;
+        }
+
+        function showApiResponse(endpoint, data) {
+            const responseDiv = document.getElementById('apiResponse');
+            responseDiv.innerHTML = `
+                <strong>${endpoint}</strong><br>
+                ${JSON.stringify(data, null, 2)}
+            `;
+        }
+
+        // Thay đổi Google Client ID
+        window.onload = function() {
+            const clientIdDiv = document.getElementById('g_id_onload');
+            // Lấy client ID từ prompt hoặc sử dụng default
+            const clientId = prompt('Nhập Google Client ID của bạn:', 'YOUR_GOOGLE_CLIENT_ID');
+            if (clientId && clientId !== 'YOUR_GOOGLE_CLIENT_ID') {
+                clientIdDiv.setAttribute('data-client_id', clientId);
+            } else {
+                alert('Vui lòng cập nhật Google Client ID trong file HTML hoặc nhập vào prompt');
+            }
+        };
+    </script>
+</body>
+</html>

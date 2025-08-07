@@ -1,0 +1,65 @@
+<div class="user-list-container">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="header-content">
+      <h1>Quản lý người dùng</h1>
+      <p>Quản lý thông tin và quyền hạn của người dùng trong hệ thống</p>
+    </div>
+    <div class="header-actions">
+      <button mat-raised-button color="primary" (click)="openCreateDialog()">
+        <mat-icon>add</mat-icon>
+        Thêm người dùng
+      </button>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <mat-card class="filter-card">
+    <mat-card-content>
+      <form [formGroup]="filterForm" class="filter-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Trạng thái</mat-label>
+          <mat-select formControlName="isActive" (selectionChange)="applyFilters()">
+            <mat-option value="">Tất cả</mat-option>
+            <mat-option value="true">Hoạt động</mat-option>
+            <mat-option value="false">Không hoạt động</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Vai trò</mat-label>
+          <mat-select formControlName="role" (selectionChange)="applyFilters()">
+            <mat-option value="">Tất cả vai trò</mat-option>
+            <mat-option *ngFor="let role of availableRoles" [value]="role.id">
+              {{ role.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-icon-button type="button" (click)="resetFilters()" matTooltip="Xóa bộ lọc">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Data Table -->
+  <app-data-table
+    [data]="users"
+    [columns]="columns"
+    [loading]="loading"
+    [totalCount]="totalCount"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [selectable]="true"
+    [searchable]="true"
+    [rowActions]="rowActions"
+    [globalActions]="globalActions"
+    title="Danh sách người dùng"
+    (pageChange)="onPageChange($event)"
+    (sortChange)="onSortChange($event)"
+    (search)="onSearch($event)"
+    (action)="onTableAction($event)"
+    (rowClick)="onRowClick($event)">
+  </app-data-table>
+</div>
