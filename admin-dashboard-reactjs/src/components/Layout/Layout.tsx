@@ -203,10 +203,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   mr: 1 
                 }}
               >
-                {user ? `${user.firstName[0]}${user.lastName[0]}` : 'U'}
+                {user ? `${user.first_name?.[0] ?? ''}${user.last_name?.[0] ?? ''}` : 'U'}
               </Avatar>
               <Typography variant="body2" sx={{ display: { xs: 'none', sm: 'block' } }}>
-                {user ? `${user.firstName} ${user.lastName}` : 'User'}
+                {user ? `${user.first_name ?? ''} ${user.last_name ?? ''}`.trim() || 'User' : 'User'}
               </Typography>
             </Box>
           </Box>
@@ -265,7 +265,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       >
         <Box sx={{ px: 2, py: 1, borderBottom: '1px solid', borderColor: 'divider' }}>
           <Typography variant="body2" fontWeight="bold">
-            {user ? `${user.firstName} ${user.lastName}` : 'User'}
+            {user ? `${user.first_name ?? ''} ${user.last_name ?? ''}`.trim() || 'User' : 'User'}
           </Typography>
           <Typography variant="caption" color="text.secondary">
             {user?.email || 'user@volcanion.com'}

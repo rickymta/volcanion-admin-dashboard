@@ -244,7 +244,7 @@ const ApiConnectionTester: React.FC = () => {
               <Divider sx={{ my: 2 }} />
               <Typography variant="body2" color="text.secondary">Logged in as:</Typography>
               <Typography variant="body1">
-                {user.firstName} {user.lastName} ({user.email})
+                {user.first_name ?? ''} {user.last_name ?? ''} ({user.email})
               </Typography>
             </>
           )}

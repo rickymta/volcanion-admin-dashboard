@@ -27,12 +27,12 @@ const Profile: React.FC = () => {
   
   const [isEditing, setIsEditing] = useState(false);
   const [userInfo, setUserInfo] = useState({
-    firstName: user?.firstName || 'John',
-    lastName: user?.lastName || 'Doe',
+    first_name: user?.first_name || 'John',
+    last_name: user?.last_name || 'Doe',
     email: user?.email || 'john.doe@volcanion.com',
     phone: '+1 (555) 123-4567',
-    position: user?.position || 'System Administrator',
-    department: user?.department || 'IT Operations',
+    gender: user?.gender || 'Male',
+    date_of_birth: user?.date_of_birth || '1990-01-01',
     location: 'San Francisco, CA',
     joinDate: '2023-01-15',
   });
@@ -43,14 +43,14 @@ const Profile: React.FC = () => {
   useEffect(() => {
     if (user) {
       const updatedInfo = {
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
+        first_name: user.first_name ?? 'John',
+        last_name: user.last_name ?? 'Doe',
+        email: user.email ?? '',
         phone: '+1 (555) 123-4567',
-        position: user.position,
-        department: user.department,
-        location: 'San Francisco, CA',
-        joinDate: '2023-01-15',
+        gender: (user.gender ?? 'other').toString(),
+        date_of_birth: user.date_of_birth ? (typeof user.date_of_birth === 'string' ? user.date_of_birth : user.date_of_birth.toISOString().slice(0, 10)) : '1990-01-01',
+        location: userInfo.location,
+        joinDate: userInfo.joinDate,
       };
       setUserInfo(updatedInfo);
       setEditedInfo(updatedInfo);
@@ -73,11 +73,11 @@ const Profile: React.FC = () => {
     
     // Update Redux state
     dispatch(updateUser({
-      firstName: editedInfo.firstName,
-      lastName: editedInfo.lastName,
+      first_name: editedInfo.first_name,
+      last_name: editedInfo.last_name,
       email: editedInfo.email,
-      position: editedInfo.position,
-      department: editedInfo.department,
+      gender: (editedInfo.gender as 'male' | 'female' | 'other'),
+      date_of_birth: typeof editedInfo.date_of_birth === 'string' ? new Date(editedInfo.date_of_birth) : editedInfo.date_of_birth,
     }));
     
     console.log('Profile updated:', editedInfo);
@@ -115,7 +115,7 @@ const Profile: React.FC = () => {
                     mb: 2,
                   }}
                 >
-                  {userInfo.firstName[0]}{userInfo.lastName[0]}
+                  {userInfo.first_name?.[0] ?? ''}{userInfo.last_name?.[0] ?? ''}
                 </Avatar>
                 <IconButton
                   sx={{
@@ -136,13 +136,13 @@ const Profile: React.FC = () => {
               </Box>
               
               <Typography variant="h5" gutterBottom>
-                {userInfo.firstName} {userInfo.lastName}
+                {userInfo.first_name} {userInfo.last_name}
               </Typography>
               <Typography variant="body2" color="text.secondary" gutterBottom>
-                {userInfo.position}
+                {userInfo.gender}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {userInfo.department}
+                {typeof userInfo.date_of_birth === 'string' ? userInfo.date_of_birth : userInfo.date_of_birth?.toISOString().slice(0, 10)}
               </Typography>
             </CardContent>
           </Card>
@@ -223,8 +223,8 @@ const Profile: React.FC = () => {
                   <TextField
                     fullWidth
                     label="First Name"
-                    value={isEditing ? editedInfo.firstName : userInfo.firstName}
-                    onChange={(e) => handleInputChange('firstName', e.target.value)}
+                    value={isEditing ? editedInfo.first_name : userInfo.first_name}
+                    onChange={(e) => handleInputChange('first_name', e.target.value)}
                     disabled={!isEditing}
                     variant={isEditing ? 'outlined' : 'filled'}
                   />
@@ -233,8 +233,8 @@ const Profile: React.FC = () => {
                   <TextField
                     fullWidth
                     label="Last Name"
-                    value={isEditing ? editedInfo.lastName : userInfo.lastName}
-                    onChange={(e) => handleInputChange('lastName', e.target.value)}
+                    value={isEditing ? editedInfo.last_name : userInfo.last_name}
+                    onChange={(e) => handleInputChange('last_name', e.target.value)}
                     disabled={!isEditing}
                     variant={isEditing ? 'outlined' : 'filled'}
                   />
@@ -264,7 +264,7 @@ const Profile: React.FC = () => {
                   <TextField
                     fullWidth
                     label="Position"
-                    value={isEditing ? editedInfo.position : userInfo.position}
+                    value={isEditing ? editedInfo.gender : userInfo.gender}
                     onChange={(e) => handleInputChange('position', e.target.value)}
                     disabled={!isEditing}
                     variant={isEditing ? 'outlined' : 'filled'}
@@ -274,7 +274,7 @@ const Profile: React.FC = () => {
                   <TextField
                     fullWidth
                     label="Department"
-                    value={isEditing ? editedInfo.department : userInfo.department}
+                    value={isEditing ? editedInfo.date_of_birth : userInfo.date_of_birth}
                     onChange={(e) => handleInputChange('department', e.target.value)}
                     disabled={!isEditing}
                     variant={isEditing ? 'outlined' : 'filled'}

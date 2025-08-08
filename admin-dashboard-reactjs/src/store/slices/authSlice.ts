@@ -4,13 +4,20 @@ import config from '../../config';
 
 // Types
 export interface User {
-  id: string;
-  firstName: string;
-  lastName: string;
+  id: number;
   email: string;
-  position: string;
-  department: string;
-  avatar?: string;
+  password: string;
+  first_name?: string;
+  last_name?: string;
+  phone?: string;
+  date_of_birth?: Date;
+  gender?: 'male' | 'female' | 'other';
+  avatar_url?: string;
+  is_verified: boolean;
+  is_active: boolean;
+  last_login?: Date;
+  created_at: Date;
+  updated_at: Date;
 }
 
 export interface AuthState {
@@ -50,14 +57,23 @@ const mockLoginAPI = async (credentials: LoginRequest): Promise<LoginResponse> =
   
   // Mock validation
   if (credentials.email === 'john.doe@volcanion.com' && credentials.password === 'password123') {
+    const now = new Date();
     return {
       user: {
-        id: '1',
-        firstName: 'John',
-        lastName: 'Doe',
+        id: 1,
         email: 'john.doe@volcanion.com',
-        position: 'System Administrator',
-        department: 'IT Operations',
+        password: 'password123',
+        first_name: 'John',
+        last_name: 'Doe',
+        phone: '0123456789',
+        date_of_birth: new Date('1990-11-24'),
+        gender: 'male',
+        avatar_url: 'https://randomuser.me/api/portraits/men/1.jpg',
+        is_verified: true,
+        is_active: true,
+        last_login: now,
+        created_at: now,
+        updated_at: now,
       },
       accessToken: 'mock-access-token-' + Date.now(),
       refreshToken: 'mock-refresh-token-' + Date.now(),
@@ -202,6 +218,11 @@ export const initializeAuth = createAsyncThunk(
     if (accessToken && refreshToken && userData) {
       try {
         const user = JSON.parse(userData);
+        // Parse lại các trường ngày nếu có
+        if (user.created_at) user.created_at = new Date(user.created_at);
+        if (user.updated_at) user.updated_at = new Date(user.updated_at);
+        if (user.last_login) user.last_login = new Date(user.last_login);
+        if (user.date_of_birth) user.date_of_birth = new Date(user.date_of_birth);
         return {
           user,
           accessToken,
@@ -229,7 +250,7 @@ const authSlice = createSlice({
     updateUser: (state, action: PayloadAction<Partial<User>>) => {
       if (state.user) {
         state.user = { ...state.user, ...action.payload };
-        localStorage.setItem('user', JSON.stringify(state.user));
+        localStorage.setItem(config.auth.userStorageKey, JSON.stringify(state.user));
       }
     },
   },
@@ -243,7 +264,12 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isAuthenticated = true;
-        state.user = action.payload.user;
+        // Chỉ nhận user đúng kiểu mới, nếu không đúng thì bỏ qua
+        if (action.payload.user && typeof action.payload.user.id === 'number' && 'is_verified' in action.payload.user) {
+          state.user = action.payload.user;
+        } else {
+          state.user = null;
+        }
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
         state.error = null;

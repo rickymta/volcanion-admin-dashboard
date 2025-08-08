@@ -1,6 +1,7 @@
 import ApiClient from '../client';
 import { API_ENDPOINTS } from '../endpoints';
 import { ApiResponse } from '../types';
+import { User } from '../../store/slices/authSlice';
 
 // Auth related types
 export interface LoginRequest {
@@ -9,16 +10,9 @@ export interface LoginRequest {
   rememberMe?: boolean;
 }
 
+
 export interface LoginResponse {
-  user: {
-    id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    position: string;
-    department: string;
-    avatar?: string;
-  };
+  user: User;
   accessToken: string;
   refreshToken: string;
   expiresIn: number;

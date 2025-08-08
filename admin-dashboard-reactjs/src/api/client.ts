@@ -181,20 +181,21 @@ class ApiClient {
 
   // Build versioned URL
   private buildVersionedUrl(url: string, version?: string): string {
+    // Nếu là full URL thì trả về nguyên giá trị
+    if (/^https?:\/\//i.test(url)) {
+      return url;
+    }
     if (!this.config.versioningEnabled) {
       return url;
     }
-
     const apiVersion = version || this.config.version;
-    
     // If URL already starts with version, don't add it again
     if (url.startsWith(`/${apiVersion}/`) || url.startsWith(`${apiVersion}/`)) {
       return url;
     }
-    
     // Add version prefix to URL
     const cleanUrl = url.startsWith('/') ? url : `/${url}`;
-    return `/${apiVersion}${cleanUrl}`;
+    return `${this.config.baseURL}/${apiVersion}${cleanUrl}`;
   }
 
   // Enhanced request method with versioning support
