@@ -1,0 +1,121 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "G:\\Github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5FBA774F-8E1C-4172-B6C8-218C93FDB660}|Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj|g:\\github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\volcanion.auth.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FBA774F-8E1C-4172-B6C8-218C93FDB660}|Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj|solutionrelative:volcanion.auth.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FBA774F-8E1C-4172-B6C8-218C93FDB660}|Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj|g:\\github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\volcanion.auth.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5FBA774F-8E1C-4172-B6C8-218C93FDB660}|Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj|solutionrelative:volcanion.auth.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FBA774F-8E1C-4172-B6C8-218C93FDB660}|Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj|g:\\github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\volcanion.auth.api\\volcanion.auth.api.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{5FBA774F-8E1C-4172-B6C8-218C93FDB660}|Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj|solutionrelative:volcanion.auth.api\\volcanion.auth.api.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FBA774F-8E1C-4172-B6C8-218C93FDB660}|Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj|g:\\github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\volcanion.auth.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5FBA774F-8E1C-4172-B6C8-218C93FDB660}|Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj|solutionrelative:volcanion.auth.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FBA774F-8E1C-4172-B6C8-218C93FDB660}|Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj|g:\\github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\volcanion.auth.api\\application\\commands\\auth\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FBA774F-8E1C-4172-B6C8-218C93FDB660}|Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj|solutionrelative:volcanion.auth.api\\application\\commands\\auth\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FBA774F-8E1C-4172-B6C8-218C93FDB660}|Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj|g:\\github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\volcanion.auth.api\\application\\commands\\auth\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FBA774F-8E1C-4172-B6C8-218C93FDB660}|Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj|solutionrelative:volcanion.auth.api\\application\\commands\\auth\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "G:\\Github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\Volcanion.Auth.Api\\Program.cs",
+              "RelativeDocumentMoniker": "Volcanion.Auth.Api\\Program.cs",
+              "ToolTip": "G:\\Github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\Volcanion.Auth.Api\\Program.cs",
+              "RelativeToolTip": "Volcanion.Auth.Api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-09T01:18:37.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "G:\\Github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\Volcanion.Auth.Api\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Volcanion.Auth.Api\\Properties\\launchSettings.json",
+              "ToolTip": "G:\\Github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\Volcanion.Auth.Api\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Volcanion.Auth.Api\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-09T01:18:30.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Volcanion.Auth.Api",
+              "DocumentMoniker": "G:\\Github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj",
+              "RelativeDocumentMoniker": "Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj",
+              "ToolTip": "G:\\Github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj",
+              "RelativeToolTip": "Volcanion.Auth.Api\\Volcanion.Auth.Api.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-09T01:18:28.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "G:\\Github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\Volcanion.Auth.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "Volcanion.Auth.Api\\appsettings.json",
+              "ToolTip": "G:\\Github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\Volcanion.Auth.Api\\appsettings.json",
+              "RelativeToolTip": "Volcanion.Auth.Api\\appsettings.json",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAIwF0AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-09T00:41:42.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RegisterCommand.cs",
+              "DocumentMoniker": "G:\\Github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\Volcanion.Auth.Api\\Application\\Commands\\Auth\\RegisterCommand.cs",
+              "RelativeDocumentMoniker": "Volcanion.Auth.Api\\Application\\Commands\\Auth\\RegisterCommand.cs",
+              "ToolTip": "G:\\Github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\Volcanion.Auth.Api\\Application\\Commands\\Auth\\RegisterCommand.cs",
+              "RelativeToolTip": "Volcanion.Auth.Api\\Application\\Commands\\Auth\\RegisterCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-09T00:41:22.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginCommand.cs",
+              "DocumentMoniker": "G:\\Github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\Volcanion.Auth.Api\\Application\\Commands\\Auth\\LoginCommand.cs",
+              "RelativeDocumentMoniker": "Volcanion.Auth.Api\\Application\\Commands\\Auth\\LoginCommand.cs",
+              "ToolTip": "G:\\Github\\volcanion-microservices\\volcanion-admin-dashboard\\cms-api\\Volcanion.Auth.Api\\Application\\Commands\\Auth\\LoginCommand.cs",
+              "RelativeToolTip": "Volcanion.Auth.Api\\Application\\Commands\\Auth\\LoginCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-09T00:41:21.136Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\bin\Debug\net8.0\Volcanion.Auth.Application.deps.json
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\bin\Debug\net8.0\Volcanion.Auth.Application.dll
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\bin\Debug\net8.0\Volcanion.Auth.Application.pdb
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\bin\Debug\net8.0\Volcanion.Auth.Domain.dll
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\bin\Debug\net8.0\Volcanion.Auth.Domain.pdb
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\obj\Debug\net8.0\Volcanion.Auth.Application.csproj.AssemblyReference.cache
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\obj\Debug\net8.0\Volcanion.Auth.Application.GeneratedMSBuildEditorConfig.editorconfig
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\obj\Debug\net8.0\Volcanion.Auth.Application.AssemblyInfoInputs.cache
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\obj\Debug\net8.0\Volcanion.Auth.Application.AssemblyInfo.cs
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\obj\Debug\net8.0\Volcanion.Auth.Application.csproj.CoreCompileInputs.cache
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\obj\Debug\net8.0\Volcanion.Auth.Application.sourcelink.json
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\obj\Debug\net8.0\Volcanio.7979AE68.Up2Date
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\obj\Debug\net8.0\Volcanion.Auth.Application.dll
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\obj\Debug\net8.0\refint\Volcanion.Auth.Application.dll
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\obj\Debug\net8.0\Volcanion.Auth.Application.pdb
+G:\Github\volcanion-microservices\volcanion-admin-dashboard\admin-api\src\Volcanion.Auth.Application\obj\Debug\net8.0\ref\Volcanion.Auth.Application.dll
